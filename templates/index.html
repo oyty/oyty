@@ -25,16 +25,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">{{ title }}</a>
+
+            <a style="float:left;margin:6px 20px" href="#"><img src="/images/avatar.png" style="width: 38px; height: 38px; "/></a>
+            <a class="navbar-brand" href="#" style="font-family:STKaiti">{{ title }}</a>
+
         </div>
+
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Blog</a></li>
-                {% for social in sociallist %}
-                    <li><a href="{{ social[1] }}">{{ social[0] }}</a></li>
-                {% endfor %}
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -42,7 +42,7 @@
 
 <div class="row" style="padding-top: 70px">
     <div class="container center-block">
-        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
         <div class="col-md-10 col-sm-12">
             <div class="panel panel-default">
                 <ul class="list-group">
@@ -54,7 +54,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
         </div>
     </div>
 </div>
