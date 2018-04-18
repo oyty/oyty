@@ -9,8 +9,8 @@ body {
     font-size: 18px;
     margin: auto;
     margin-top: 5%;
-    padding: 2% 5%;
-    width: 58%;
+    padding: 2% 2%;
+    width: 60%;
     line-height: 200%;
     border: 1px solid LightGrey;
 }
@@ -19,7 +19,7 @@ body {
   body {
       margin: auto;
       margin-top: 5%;
-      width: 55%;
+      width: 60%;
   }
 }
 
@@ -36,6 +36,7 @@ H2 {
     width: 98%;
     line-height: 150%;
     color: #666666;
+    text-align: center;
 }
 
 H3 {

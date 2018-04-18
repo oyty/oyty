@@ -1,7 +1,8 @@
+# coding=utf-8
 __author__ = 'oyty'
 
 
-#!/usr/bin/env python
+# !/usr/bin/env python
 
 import os
 import re
@@ -17,10 +18,12 @@ class Post(object):
     def __init__(self, from_file):
         if not os.path.isfile(from_file): raise RuntimeError("not a file")
         self.fromfile = from_file
-        post_dir = join(root_dir, "post")
-        self.destfile = join(dirname(self.fromfile.replace(post_dir, website_dir)),
+        post_dir = join(website_dir, from_file)
+        self.destfile = join(dirname(post_dir),
                              splitext(filename(self.fromfile))[0] + ".html")
         self.url = pathname2url(self.destfile.split(website_dir)[1])
+        # print(self.destfile)
+        # print(self.url)
         self._html = None
         self._title = None
 
@@ -32,7 +35,7 @@ class Post(object):
                                                 extras=['fenced-code-blocks', 'footnotes'])
                 c = re.compile("<p>(\\n)+</p>")
                 self._html = re.sub(c, '</br>', self._html)
-                print(self._html)
+                # print(self._html)
         return self._html
 
     @property
@@ -50,6 +53,7 @@ class Post(object):
             # print(html)
             fd.write(html)
 
+
 def all_post_file():
     post_basedir = join(root_dir, "post")
     postlist = []
@@ -58,17 +62,31 @@ def all_post_file():
             # 设置忽略格式
             if f_name.startswith(".") or f_name.endswith(("pdf",)): continue
             post_path = join(root, f_name)
-            print(post_path)
+            # print(post_path)
             c_time = os.stat(post_path).st_ctime
             postlist.append((post_path, c_time))
-    return sorted(postlist, key=lambda x:x[1], reverse=True)
+    return sorted(postlist, key=lambda x: x[1], reverse=True)
+
+
+def all_program_file():
+    program_basedir = join(root_dir, "program")
+    program_list = []
+    for root, dirs, files in os.walk(program_basedir):
+        for f_name in files:
+            # 设置忽略格式
+            if f_name.startswith(".") or f_name.endswith(("pdf",)): continue
+            post_path = join(root, f_name)
+            # print(post_path)
+            c_time = os.stat(post_path).st_ctime
+            program_list.append((post_path, c_time))
+    return sorted(program_list, key=lambda x: x[1], reverse=True)
+
 
 def cover_all_post():
     """create posts html format and make up index.html"""
-    post_basedir = join(root_dir, "post")
     postlist = []
     for (post_path, _) in all_post_file():
-        print(post_path)
+        # print('post_path--' + post_path)
         p = Post(post_path)
         p.write()
         print(p.title, p.url)
@@ -76,6 +94,20 @@ def cover_all_post():
     index_t = jinja_env.get_template("index.html")
     with open(join(website_dir, "index.html"), "w") as fd:
         fd.write(index_t.render(postlist=postlist))
+
+
+def cover_all_program():
+    """create program html format and make up program-think.html"""
+    program_list = []
+    for (post_path, _) in all_program_file():
+        # print('post_path--' + post_path)
+        p = Post(post_path)
+        p.write()
+        print(p.title, p.url)
+        program_list.append(p)
+    index_t = jinja_env.get_template("program-think.html")
+    with open(join(website_dir, "program-think.html"), "w") as fd:
+        fd.write(index_t.render(postlist=program_list))
 
 
 def copy_all_static():
@@ -98,6 +130,7 @@ def develop():
     """部署到github"""
     copy_all_static()
     cover_all_post()
+    cover_all_program()
     push_to_github()
 
 
@@ -109,6 +142,7 @@ website_dir = "/Users/oyty/Documents/GitHub/oyty.github.io"
 
 # 博客名字
 jinja_env.globals["title"] = "游戏人生"
+jinja_env.globals["program_title"] = "程序人生"
 
 # 博客图标
 jinja_env.globals["icon"] = "logo.bmp"
