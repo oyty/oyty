@@ -82,6 +82,20 @@ def all_program_file():
     return sorted(program_list, key=lambda x: x[1], reverse=True)
 
 
+def all_trade_file():
+    trade_basedir = join(root_dir, "trade")
+    trade_list = []
+    for root, dirs, files in os.walk(trade_basedir):
+        for f_name in files:
+            # 设置忽略格式
+            if f_name.startswith(".") or f_name.endswith(("pdf",)): continue
+            post_path = join(root, f_name)
+            # print(post_path)
+            c_time = os.stat(post_path).st_ctime
+            trade_list.append((post_path, c_time))
+    return sorted(trade_list, key=lambda x: x[1], reverse=True)
+
+
 def cover_all_post():
     """create posts html format and make up index.html"""
     postlist = []
@@ -110,6 +124,20 @@ def cover_all_program():
         fd.write(index_t.render(postlist=program_list))
 
 
+def cover_all_trade():
+    """create trade html format and make up trade-think.html"""
+    trade_list = []
+    for (post_path, _) in all_trade_file():
+        # print('post_path--' + post_path)
+        p = Post(post_path)
+        p.write()
+        print(p.title, p.url)
+        trade_list.append(p)
+    index_t = jinja_env.get_template("trade-think.html")
+    with open(join(website_dir, "trade-think.html"), "w") as fd:
+        fd.write(index_t.render(postlist=trade_list))
+
+
 def copy_all_static():
     """拷贝 static/* 到 设置的website文件夹下"""
     base_websit = join(root_dir, "static")
@@ -131,6 +159,7 @@ def develop():
     copy_all_static()
     cover_all_post()
     cover_all_program()
+    cover_all_trade()
     push_to_github()
 
 
