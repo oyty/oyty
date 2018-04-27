@@ -1,10 +1,10 @@
-##如何理解`yield`关键字
+## [Scrapy-1] 如何理解`yield`关键字
 ﻿
 为了理解什么是`yield`，你必须理解什么是生成器。在理解生成器之前，我们先来看看什么是迭代。
 
 ####可迭代对象 Iterables
 当你创建了一个列表，你可以逐项地读取它，这就叫做迭代：
-```
+```python
 >>> mylist = [1, 2, 3]
 >>> for i in mylist:
 ...     print i
@@ -14,7 +14,7 @@
 3
 ```
 `mylist`是一个迭代对象，当你使用一个列表生成式来建立一个列表的时候，就建立了一个可迭代对象：
-```
+```python
 >>> mylist = [x*x for x in range(3)]
 >>> for i in mylist:
 ...     print i
@@ -29,7 +29,7 @@
 
 #### 生成器 Generators
 生成器是可以迭代的，但是`你只能迭代它们一次`，生成器并不把数据都放在内存中，它是实时地生成数据。
-```
+```python
 >>> mygenerator = (x*x for x in range(3))
 >>> for i in mygenerator:
 ...     print i
@@ -42,7 +42,7 @@
 
 #### Yield 关键字
 `yield`是一个关键字，作用和`return`差不多，差别在`yield`返回的是一个生成器。
-```
+```python
 >>> def createGenerator():
 ...     mylist = range(3)
 ...     for i in mylist:
@@ -64,7 +64,7 @@
 那么你的生成器的代码什么时候执行呢？当你使用`for...in...`进行迭代的时候。
 
 我来看看程序的执行情况：
-```
+```python
 def createGenerator():
     mylist = range(3)
     print('aaaa')

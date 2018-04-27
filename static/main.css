@@ -35,7 +35,7 @@ H2 {
     border-bottom: 2px LightGrey solid;
     width: 98%;
     line-height: 150%;
-    color: #666666;
+    color: #555555;
     text-align: center;
 }
 
@@ -46,7 +46,7 @@ H3 {
     border-bottom: 1px LightGrey solid;
     width: 98%;
     line-height: 150%;
-    color: #666666;
+    color: #555555;
 }
 
 H4 {
@@ -56,7 +56,7 @@ H4 {
     border-bottom: 1px LightGrey solid;
     width: 98%;
     line-height: 150%;
-    color: #666666;
+    color: #555555;
 }
 
 li {
@@ -74,8 +74,6 @@ blockquote {
 pre {
     font-family: Inconsolata, Consolas, "DEJA VU SANS MONO", "DROID SANS MONO", Proggy, monospace;
     font-size: 90%;
-    border: solid 1px lightgrey;
-    background-color: Ivory;
     padding: 5px;
     line-height: 130%;
     margin-left: auto;

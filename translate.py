@@ -172,6 +172,7 @@ website_dir = "/Users/oyty/Documents/GitHub/oyty.github.io"
 # 博客名字
 jinja_env.globals["title"] = "游戏人生"
 jinja_env.globals["program_title"] = "程序人生"
+jinja_env.globals["trade_title"] = "Trade Life"
 
 # 博客图标
 jinja_env.globals["icon"] = "logo.bmp"
