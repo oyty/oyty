@@ -90,7 +90,6 @@ def all_trade_file():
             # 设置忽略格式
             if f_name.startswith(".") or f_name.endswith(("pdf",)): continue
             post_path = join(root, f_name)
-            # print(post_path)
             c_time = os.stat(post_path).st_ctime
             trade_list.append((post_path, c_time))
     return sorted(trade_list, key=lambda x: x[1], reverse=True)

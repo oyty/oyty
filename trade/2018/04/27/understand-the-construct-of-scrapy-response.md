@@ -1,5 +1,4 @@
-
-## [Scrapy-3] 理解Scrapy的Response的数据结构
+##[Scrapy-3] 理解Scrapy的Response的数据结构
 
 
 ﻿我们知道，`Scrapy`最终给到我们的是`response`对象，了解了`response`的数据结构，我们就能更好的解析利用`response`数据。

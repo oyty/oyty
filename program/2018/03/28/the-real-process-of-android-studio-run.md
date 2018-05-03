@@ -1,5 +1,5 @@
 
-## ﻿Android Studio点击Run按钮的实际操作
+##Android Studio点击Run按钮的实际操作
 
 ﻿### 检查项目和读取基本配置
 
