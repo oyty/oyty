@@ -65,7 +65,8 @@ def all_post_file():
             # print(post_path)
             c_time = os.stat(post_path).st_ctime
             postlist.append((post_path, c_time))
-    return sorted(postlist, key=lambda x: x[1], reverse=True)
+    # return sorted(postlist, key=lambda x: x[1], reverse=True)
+    return postlist
 
 
 def all_program_file():
@@ -79,7 +80,8 @@ def all_program_file():
             # print(post_path)
             c_time = os.stat(post_path).st_ctime
             program_list.append((post_path, c_time))
-    return sorted(program_list, key=lambda x: x[1], reverse=True)
+    # return sorted(program_list, key=lambda x: x[1], reverse=True)
+    return program_list
 
 
 def all_trade_file():
@@ -92,7 +94,8 @@ def all_trade_file():
             post_path = join(root, f_name)
             c_time = os.stat(post_path).st_ctime
             trade_list.append((post_path, c_time))
-    return sorted(trade_list, key=lambda x: x[1], reverse=True)
+    # return sorted(trade_list, key=lambda x: x[1], reverse=True)
+    return trade_list
 
 
 def cover_all_post():
