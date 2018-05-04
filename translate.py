@@ -35,6 +35,7 @@ class Post(object):
                                                 extras=['fenced-code-blocks', 'footnotes'])
                 c = re.compile("<p>(\\n)+</p>")
                 self._html = re.sub(c, '</br>', self._html)
+
                 # print(self._html)
         return self._html
 
@@ -63,10 +64,10 @@ def all_post_file():
             if f_name.startswith(".") or f_name.endswith(("pdf",)): continue
             post_path = join(root, f_name)
             # print(post_path)
-            c_time = os.stat(post_path).st_ctime
+            c_time = os.stat(post_path).st_ctime_ns
             postlist.append((post_path, c_time))
-    # return sorted(postlist, key=lambda x: x[1], reverse=True)
-    return postlist
+    return sorted(postlist, key=lambda x: x[1], reverse=True)
+    # return sopostlist
 
 
 def all_program_file():
@@ -78,10 +79,10 @@ def all_program_file():
             if f_name.startswith(".") or f_name.endswith(("pdf",)): continue
             post_path = join(root, f_name)
             # print(post_path)
-            c_time = os.stat(post_path).st_ctime
+            c_time = os.stat(post_path).st_ctime_ns
             program_list.append((post_path, c_time))
-    # return sorted(program_list, key=lambda x: x[1], reverse=True)
-    return program_list
+    return sorted(program_list, key=lambda x: x[1], reverse=True)
+    # return program_list
 
 
 def all_trade_file():
@@ -92,10 +93,10 @@ def all_trade_file():
             # 设置忽略格式
             if f_name.startswith(".") or f_name.endswith(("pdf",)): continue
             post_path = join(root, f_name)
-            c_time = os.stat(post_path).st_ctime
+            c_time = os.stat(post_path).st_ctime_ns
             trade_list.append((post_path, c_time))
-    # return sorted(trade_list, key=lambda x: x[1], reverse=True)
-    return trade_list
+    return sorted(trade_list, key=lambda x: x[1], reverse=True)
+    # return trade_list
 
 
 def cover_all_post():
