@@ -1,9 +1,9 @@
-
 ##Android Studio点击Run按钮的实际操作
 
-﻿### 检查项目和读取基本配置
+<h4>检查项目和读取基本配置</h4>
 
-###Gradle Build
+#### Gradle Build
+
 gradle编译的形式和你的配置有关：
 ```
 buildTypes {
@@ -32,4 +32,4 @@ buildTypes {
 
 一般执行运行安装默认为debug。
 
-###Apk install & LaunchActivity
+####Apk install & LaunchActivity

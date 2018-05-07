@@ -26,7 +26,8 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a style="float:left;margin:6px 20px" href="#"><img src="/images/avatar.png" style="width: 38px; height: 38px; "/></a>
+            <a style="float:left;margin:6px 20px" href="#"><img src="/images/avatar.png"
+                                                                style="width: 38px; height: 38px; "/></a>
             <a class="navbar-brand" href="https://oyty.me" style="font-family:STKaiti">{{ title }}</a>
 
         </div>
@@ -42,20 +43,25 @@
 </nav>
 
 <div class="row" style="padding-top: 70px">
-    <div class="container center-block">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 col-sm-12">
+    <div class="container">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 col-sm-12">
             <div class="panel panel-default">
                 <ul class="list-group">
                     {% for post in postlist %}
-                        <li class="list-group-item title">
-                            <a href="{{ post.url }}">{{ post.title }}</a>
-                        </li>
+                    <li class="list-group-item title">
+                        <a href="{{ post.url }}">{{ post.title }}</a>
+                    </li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-2">
+            <div class="entry-box entry-box-top entry-box-bottom">
+                <p id="motto" style="padding-top: 10px;">
+
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -63,11 +69,18 @@
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115892756-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-  gtag('config', 'UA-115892756-1');
+    gtag('config', 'UA-115892756-1');
+</script>
+<script>
+    var mottos = {{ mottos }}
+    var insertText = document.createTextNode(mottos[Math.floor(Math.random() * mottos.length)]);
+    document.getElementById("motto").appendChild(insertText);
 </script>
 
 </body>

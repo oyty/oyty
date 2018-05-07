@@ -50,9 +50,17 @@ class Post(object):
         if not os.path.exists(dirname(self.destfile)):
             os.makedirs(dirname(self.destfile))
         with open(self.destfile, "w", encoding="utf-8", errors="xmlcharrefreplace") as fd:
-            html = jinja_env.get_template("post.html").render(title=self.title, content=self.html)
+            html = jinja_env.get_template("post.html").render(title=self.title, content=self.html, mottos=generate_mottos())
             # print(html)
             fd.write(html)
+
+
+def generate_mottos():
+    mottos_r = open(join(website_dir, "sources/motto.txt"), "r")
+    mottos = []
+    for motto in mottos_r:
+        mottos.append(motto)
+    return mottos
 
 
 def all_post_file():
@@ -66,7 +74,7 @@ def all_post_file():
             # print(post_path)
             c_time = os.stat(post_path).st_ctime_ns
             postlist.append((post_path, c_time))
-    return sorted(postlist, key=lambda x: x[1], reverse=True)
+    return sorted(postlist, key=lambda x: x[1], reverse=False)
     # return sopostlist
 
 
@@ -110,7 +118,7 @@ def cover_all_post():
         postlist.append(p)
     index_t = jinja_env.get_template("index.html")
     with open(join(website_dir, "index.html"), "w") as fd:
-        fd.write(index_t.render(postlist=postlist))
+        fd.write(index_t.render(postlist=postlist, mottos=generate_mottos()))
 
 
 def cover_all_program():
@@ -124,7 +132,7 @@ def cover_all_program():
         program_list.append(p)
     index_t = jinja_env.get_template("program-think.html")
     with open(join(website_dir, "program-think.html"), "w") as fd:
-        fd.write(index_t.render(postlist=program_list))
+        fd.write(index_t.render(postlist=program_list, mottos=generate_mottos()))
 
 
 def cover_all_trade():
@@ -138,7 +146,7 @@ def cover_all_trade():
         trade_list.append(p)
     index_t = jinja_env.get_template("trade-think.html")
     with open(join(website_dir, "trade-think.html"), "w") as fd:
-        fd.write(index_t.render(postlist=trade_list))
+        fd.write(index_t.render(postlist=trade_list, mottos=generate_mottos()))
 
 
 def copy_all_static():

@@ -150,3 +150,7 @@ div.tweet i {
     margin-right: 0.5em;
     padding: 0px 2px;
 }
+
+.motto {
+    font-family: STFangSong, Helvetica, Arial, Vernada, Tahoma, STXihei, "Microsoft YaHei", "Songti SC", SimSun, Heiti, sans-serif;
+}

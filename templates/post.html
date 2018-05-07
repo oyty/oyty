@@ -12,6 +12,8 @@
 </head>
 <body>
   <div class="content">
+      <div class="entry-box entry-box-top entry-box-bottom motto" id="motto">
+      </div>
     {{ content }}
   </div>
 
@@ -29,6 +31,10 @@
 
   gtag('config', 'UA-115892756-1');
 </script>
-
+<script>
+    var mottos = {{ mottos }}
+    var insertText = document.createTextNode(mottos[Math.floor(Math.random() * mottos.length)]);
+    document.getElementById("motto").appendChild(insertText);
+</script>
 
 </html>
